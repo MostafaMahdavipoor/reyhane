@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام در دوره‌ها</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .course-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-image {
+            height: 200px;
+            background-color: #e9ecef;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .course-image i {
+            font-size: 3rem;
+            color: #6c757d;
+        }
+        .level-badge {
+            font-size: 0.8rem;
+        }
+        .level-beginner {
+            background-color: #28a745;
+        }
+        .level-intermediate {
+            background-color: #fd7e14;
+        }
+        .level-advanced {
+            background-color: #dc3545;
+        }
+        .price-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(13, 110, 253, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .course-details {
+            padding: 20px;
+        }
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .course-description {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .course-meta span {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .btn-enroll {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .filter-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .course-detail-modal .modal-content {
+            border-radius: 15px;
+        }
+        .course-detail-header {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .lesson-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .enrolled-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(40, 167, 69, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3">پلتفرم آموزش زبان عربی</h1>
+                <div>
+                    <a href="#" class="btn btn-outline-light me-2" id="login-btn">ورود</a>
+                    <a href="#" class="btn btn-light" id="register-btn">ثبت نام</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Filter Sidebar -->
+            <div class="col-md-3">
+                <div class="filter-section">
+                    <h5 class="mb-3">جستجو و فیلتر</h5>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="search-input" placeholder="جستجو در دوره‌ها...">
+                    </div>
+                    <h6 class="mb-2">سطح دوره</h6>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="beginner" id="level-beginner" checked>
+                            <label class="form-check-label" for="level-beginner">
+                                مبتدی
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="intermediate" id="level-intermediate" checked>
+                            <label class="form-check-label" for="level-intermediate">
+                                متوسط
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="advanced" id="level-advanced" checked>
+                            <label class="form-check-label" for="level-advanced">
+                                پیشرفته
+                            </label>
+                        </div>
+                    </div>
+                    <h6 class="mb-2">قیمت</h6>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="free" id="price-free" checked>
+                            <label class="form-check-label" for="price-free">
+                                رایگان
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="paid" id="price-paid" checked>
+                            <label class="form-check-label" for="price-paid">
+                                غیر رایگان
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100" id="apply-filter-btn">اعمال فیلتر</button>
+                </div>
+
+                <div class="filter-section">
+                    <h5 class="mb-3">دوره‌های من</h5>
+                    <div id="my-courses-list">
+                        <p class="text-center text-muted">برای مشاهده دوره‌های خود وارد شوید</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="col-md-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>دوره‌های آموزشی</h2>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            مرتب‌سازی
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                            <li><a class="dropdown-item" href="#" data-sort="newest">جدیدترین</a></li>
+                            <li><a class="dropdown-item" href="#" data-sort="popular">محبوب‌ترین</a></li>
+                            <li><a class="dropdown-item" href="#" data-sort="price-asc">قیمت (کم به زیاد)</a></li>
+                            <li><a class="dropdown-item" href="#" data-sort="price-desc">قیمت (زیاد به کم)</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row" id="courses-container">
+                    <!-- Courses will be loaded here -->
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">قبلی</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">بعدی</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Detail Modal -->
+    <div class="modal fade course-detail-modal" id="courseDetailModal" tabindex="-1" aria-labelledby="courseDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="course-detail-header">
+                    <h5 class="modal-title" id="courseDetailModalLabel">عنوان دوره</h5>
+                    <p class="mb-2" id="course-detail-description">توضیحات دوره</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="badge bg-primary me-2" id="course-detail-level">سطح</span>
+                            <span class="text-muted" id="course-detail-duration">مدت زمان</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold" id="course-detail-price">قیمت</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h6 class="mb-3">سرفصل‌های دوره</h6>
+                    <div class="lesson-list list-group" id="course-lessons-list">
+                        <!-- Lessons will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                    <button type="button" class="btn btn-primary" id="enroll-btn">ثبت نام در دوره</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">ورود به حساب کاربری</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember-me">
+                            <label class="form-check-label" for="remember-me">مرا به خاطر بسپار</label>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">ورود</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p class="mb-0">حساب کاربری ندارید؟ <a href="#" id="show-register-modal">ثبت نام کنید</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">ایجاد حساب کاربری</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">نام و نام خانوادگی</label>
+                            <input type="text" class="form-control" id="register-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">ایمیل</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">رمز عبور</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-confirm-password" class="form-label">تکرار رمز عبور</label>
+                            <input type="password" class="form-control" id="register-confirm-password" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">ثبت نام</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p class="mb-0">قبلاً ثبت نام کرده‌اید؟ <a href="#" id="show-login-modal">وارد شوید</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enrollment Confirmation Modal -->
+    <div class="modal fade" id="enrollConfirmModal" tabindex="-1" aria-labelledby="enrollConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enrollConfirmModalLabel">تایید ثبت نام در دوره</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>آیا مطمئن هستید که می‌خواهید در دوره <span id="enroll-course-title" class="fw-bold"></span> ثبت نام کنید؟</p>
+                    <div id="payment-info" class="d-none">
+                        <p>مبلغ قابل پرداخت: <span id="enroll-course-price" class="fw-bold"></span></p>
+                        <div class="mb-3">
+                            <label for="card-number" class="form-label">شماره کارت</label>
+                            <input type="text" class="form-control" id="card-number" placeholder="شماره کارت 16 رقمی">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                    <button type="button" class="btn btn-primary" id="confirm-enroll-btn">تایید و ثبت نام</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        const API_URL = 'api/course_api.php';
+        let currentPage = 1;
+        let currentSort = 'newest';
+        let currentUser = null;
+        let currentCourseId = null;
+        let userEnrollments = [];
+
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load initial data
+            loadCourses();
+
+            // Event listeners
+            document.getElementById('login-btn').addEventListener('click', showLoginModal);
+            document.getElementById('register-btn').addEventListener('click', showRegisterModal);
+            document.getElementById('show-register-modal').addEventListener('click', function(e) {
+                e.preventDefault();
+                hideLoginModal();
+                showRegisterModal();
+            });
+            document.getElementById('show-login-modal').addEventListener('click', function(e) {
+                e.preventDefault();
+                hideRegisterModal();
+                showLoginModal();
+            });
+            document.getElementById('login-form').addEventListener('submit', handleLogin);
+            document.getElementById('register-form').addEventListener('submit', handleRegister);
+            document.getElementById('apply-filter-btn').addEventListener('click', applyFilters);
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') applyFilters();
+            });
+            document.getElementById('enroll-btn').addEventListener('click', showEnrollConfirmation);
+            document.getElementById('confirm-enroll-btn').addEventListener('click', confirmEnrollment);
+
+            // Sort dropdown
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    currentSort = this.dataset.sort;
+                    document.getElementById('sortDropdown').textContent = this.textContent;
+                    loadCourses();
+                });
+            });
+
+            // Check if user is logged in (mock)
+            checkLoginStatus();
+        });
+
+        // Check login status (mock)
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUIForLoggedInUser();
+                loadUserEnrollments();
+            }
+        }
+
+        // Update UI for logged in user
+        function updateUIForLoggedInUser() {
+            document.getElementById('login-btn').textContent = 'خروج';
+            document.getElementById('login-btn').removeEventListener('click', showLoginModal);
+            document.getElementById('login-btn').addEventListener('click', handleLogout);
+            document.getElementById('register-btn').style.display = 'none';
+        }
+
+        // Load courses
+        function loadCourses() {
+            // In a real application, you would apply filters and sorting here
+            fetch(`${API_URL}?action=list&page=${currentPage}&status=published`)
+                .then(response => response.json())
+                .then(data => {
+                    renderCourses(data);
+                })
+                .catch(error => {
+                    console.error('Error loading courses:', error);
+                    alert('خطا در بارگذاری دوره‌ها');
+                });
+        }
+
+        // Render courses
+        function renderCourses(courses) {
+            const container = document.getElementById('courses-container');
+            container.innerHTML = '';
+
+            if (courses.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center py-5"><p>هیچ دوره‌ای یافت نشد.</p></div>';
+                return;
+            }
+
+            courses.forEach(course => {
+                const levelClass = `level-${course.level}`;
+                const levelText = {
+                    'beginner': 'مبتدی',
+                    'intermediate': 'متوسط',
+                    'advanced': 'پیشرفته'
+                }[course.level] || 'مبتدی';
+
+                const isEnrolled = userEnrollments.some(enrollment => enrollment.course_id === course.id);
+                const enrolledBadge = isEnrolled ? '<span class="enrolled-badge">ثبت‌نام شده</span>' : '';
+
+                const courseHtml = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card course-card">
+                            ${enrolledBadge}
+                            <div class="course-image">
+                                <i class="bi bi-book"></i>
+                                <span class="price-tag">${course.price > 0 ? course.price.toLocaleString() + ' تومان' : 'رایگان'}</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="course-title">${course.title_fa}</h5>
+                                <p class="course-description">${course.description.substring(0, 100)}...</p>
+                                <div class="course-meta">
+                                    <span class="badge ${levelClass}">${levelText}</span>
+                                    <span>${course.duration || 'نامشخص'}</span>
+                                </div>
+                                <button class="btn ${isEnrolled ? 'btn-success' : 'btn-primary'} btn-enroll" 
+                                        onclick="viewCourseDetails(${course.id})" 
+                                        ${isEnrolled ? 'disabled' : ''}>
+                                    ${isEnrolled ? 'ثبت‌نام شده' : 'مشاهده و ثبت‌نام'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += courseHtml;
+            });
+        }
+
+        // View course details
+        function viewCourseDetails(courseId) {
+            currentCourseId = courseId;
+            fetch(`${API_URL}?action=get&id=${courseId}`)
+                .then(response => response.json())
+                .then(course => {
+                    document.getElementById('courseDetailModalLabel').textContent = course.title_fa;
+                    document.getElementById('course-detail-description').textContent = course.description;
+                    
+                    const levelText = {
+                        'beginner': 'مبتدی',
+                        'intermediate': 'متوسط',
+                        'advanced': 'پیشرفته'
+                    }[course.level] || 'مبتدی';
+                    
+                    document.getElementById('course-detail-level').textContent = levelText;
+                    document.getElementById('course-detail-duration').textContent = course.duration || 'نامشخص';
+                    document.getElementById('course-detail-price').textContent = 
+                        course.price > 0 ? course.price.toLocaleString() + ' تومان' : 'رایگان';
+                    
+                    // Check if user is already enrolled
+                    const isEnrolled = userEnrollments.some(enrollment => enrollment.course_id === course.id);
+                    const enrollBtn = document.getElementById('enroll-btn');
+                    
+                    if (isEnrolled) {
+                        enrollBtn.textContent = 'شما در این دوره ثبت‌نام کرده‌اید';
+                        enrollBtn.classList.remove('btn-primary');
+                        enrollBtn.classList.add('btn-success');
+                        enrollBtn.disabled = true;
+                    } else {
+                        enrollBtn.textContent = 'ثبت نام در دوره';
+                        enrollBtn.classList.remove('btn-success');
+                        enrollBtn.classList.add('btn-primary');
+                        enrollBtn.disabled = false;
+                    }
+                    
+                    // Load course lessons
+                    loadCourseLessons(courseId);
+                    
+                    const modal = new bootstrap.Modal(document.getElementById('courseDetailModal'));
+                    modal.show();
+                })
+                .catch(error => {
+                    console.error('Error fetching course details:', error);
+                    alert('خطا در دریافت اطلاعات دوره');
+                });
+        }
+
+        // Load course lessons
+        function loadCourseLessons(courseId) {
+            fetch(`${API_URL}?action=lessons&course_id=${courseId}`)
+                .then(response => response.json())
+                .then(lessons => {
+                    const container = document.getElementById('course-lessons-list');
+                    container.innerHTML = '';
+                    
+                    if (lessons.length === 0) {
+                        container.innerHTML = '<p class="text-center">هیچ جلسه‌ای برای این دوره ثبت نشده است.</p>';
+                        return;
+                    }
+                    
+                    lessons.forEach(lesson => {
+                        const lessonItem = document.createElement('a');
+                        lessonItem.href = '#';
+                        lessonItem.className = 'list-group-item list-group-item-action';
+                        lessonItem.innerHTML = `
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">${lesson.title_fa}</h6>
+                                <small>جلسه ${lesson.order_num}</small>
+                            </div>
+                            <p class="mb-1 text-muted small">${lesson.content.substring(0, 100)}${lesson.content.length > 100 ? '...' : ''}</p>
+                        `;
+                        container.appendChild(lessonItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching lessons:', error);
+                    document.getElementById('course-lessons-list').innerHTML = 
+                        '<p class="text-center text-danger">خطا در بارگذاری جلسات</p>';
+                });
+        }
+
+        // Load user enrollments
+        function loadUserEnrollments() {
+            if (!currentUser) return;
+            
+            fetch(`${API_URL}?action=user_enrollments&user_id=${currentUser.id}`)
+                .then(response => response.json())
+                .then(enrollments => {
+                    userEnrollments = enrollments;
+                    renderUserEnrollments(enrollments);
+                    // Refresh courses display to show enrollment status
+                    loadCourses();
+                })
+                .catch(error => {
+                    console.error('Error fetching user enrollments:', error);
+                });
+        }
+
+        // Render user enrollments
+        function renderUserEnrollments(enrollments) {
+            const container = document.getElementById('my-courses-list');
+            container.innerHTML = '';
+            
+            if (enrollments.length === 0) {
+                container.innerHTML = '<p class="text-center text-muted">شما در هیچ دوره‌ای ثبت‌نام نکرده‌اید</p>';
+                return;
+            }
+            
+            const list = document.createElement('div');
+            list.className = 'list-group';
+            
+            enrollments.forEach(enrollment => {
+                const item = document.createElement('a');
+                item.href = '#';
+                item.className = 'list-group-item list-group-item-action';
+                item.onclick = function(e) {
+                    e.preventDefault();
+                    viewCourseDetails(enrollment.course_id);
+                };
+                item.innerHTML = `
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">${enrollment.title_fa}</h6>
+                        <small>${enrollment.level === 'beginner' ? 'مبتدی' : 
+                                 enrollment.level === 'intermediate' ? 'متوسط' : 'پیشرفته'}</small>
+                    </div>
+                    <p class="mb-1 small text-muted">${enrollment.description.substring(0, 50)}...</p>
+                `;
+                list.appendChild(item);
+            });
+            
+            container.appendChild(list);
+        }
+
+        // Show login modal
+        function showLoginModal(e) {
+            if (e) e.preventDefault();
+            const modal = new bootstrap.Modal(document.getElementById('loginModal'));
+            modal.show();
+        }
+
+        // Hide login modal
+        function hideLoginModal() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (modal) modal.hide();
+        }
+
+        // Show register modal
+        function showRegisterModal(e) {
+            if (e) e.preventDefault();
+            const modal = new bootstrap.Modal(document.getElementById('registerModal'));
+            modal.show();
+        }
+
+        // Hide register modal
+        function hideRegisterModal() {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            if (modal) modal.hide();
+        }
+
+        // Handle login (mock)
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Mock login - in a real app, this would be an API call
+            if (email && password) {
+                // Mock user data
+                currentUser = {
+                    id: 1,
+                    name: 'کاربر نمونه',
+                    email: email
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateUIForLoggedInUser();
+                hideLoginModal();
+                loadUserEnrollments();
+                alert('با موفقیت وارد شدید!');
+            } else {
+                alert('لطفاً ایمیل و رمز عبور را وارد کنید');
+            }
+        }
+
+        // Handle register (mock)
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (!name || !email || !password) {
+                alert('لطفاً تمام فیلدها را پر کنید');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('رمز عبور و تکرار آن مطابقت ندارند');
+                return;
+            }
+            
+            // Mock registration - in a real app, this would be an API call
+            currentUser = {
+                id: 1,
+                name: name,
+                email: email
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            updateUIForLoggedInUser();
+            hideRegisterModal();
+            loadUserEnrollments();
+            alert('ثبت نام با موفقیت انجام شد!');
+        }
+
+        // Handle logout
+        function handleLogout(e) {
+            e.preventDefault();
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            userEnrollments = [];
+            
+            // Reset UI
+            document.getElementById('login-btn').textContent = 'ورود';
+            document.getElementById('login-btn').removeEventListener('click', handleLogout);
+            document.getElementById('login-btn').addEventListener('click', showLoginModal);
+            document.getElementById('register-btn').style.display = 'inline-block';
+            document.getElementById('my-courses-list').innerHTML = 
+                '<p class="text-center text-muted">برای مشاهده دوره‌های خود وارد شوید</p>';
+            
+            // Refresh courses display
+            loadCourses();
+            
+            alert('با موفقیت خارج شدید');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            // In a real application, this would apply filters to the API call
+            // For now, we'll just reload courses
+            loadCourses();
+        }
+
+        // Show enrollment confirmation
+        function showEnrollConfirmation() {
+            if (!currentUser) {
+                alert('برای ثبت نام در دوره ابتدا وارد حساب کاربری خود شوید');
+                hideModal('courseDetailModal');
+                showLoginModal();
+                return;
+            }
+            
+            fetch(`${API_URL}?action=get&id=${currentCourseId}`)
+                .then(response => response.json())
+                .then(course => {
+                    document.getElementById('enroll-course-title').textContent = course.title_fa;
+                    
+                    // Show payment info if course is not free
+                    const paymentInfo = document.getElementById('payment-info');
+                    if (course.price > 0) {
+                        paymentInfo.classList.remove('d-none');
+                        document.getElementById('enroll-course-price').textContent = 
+                            course.price.toLocaleString() + ' تومان';
+                    } else {
+                        paymentInfo.classList.add('d-none');
+                    }
+                    
+                    hideModal('courseDetailModal');
+                    const modal = new bootstrap.Modal(document.getElementById('enrollConfirmModal'));
+                    modal.show();
+                })
+                .catch(error => {
+                    console.error('Error fetching course details:', error);
+                    alert('خطا در دریافت اطلاعات دوره');
+                });
+        }
+
+        // Confirm enrollment
+        function confirmEnrollment() {
+            if (!currentUser || !currentCourseId) return;
+            
+            const data = {
+                action: 'enroll',
+                user_id: currentUser.id,
+                course_id: currentCourseId
+            };
+            
+            fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('ثبت نام در دوره با موفقیت انجام شد');
+                    hideModal('enrollConfirmModal');
+                    loadUserEnrollments();
+                } else {
+                    alert('خطا در ثبت نام دوره');
+                }
+            })
+            .catch(error => {
+                console.error('Error enrolling in course:', error);
+                alert('خطا در ارسال اطلاعات');
+            });
+        }
+
+        // Helper function to hide modal
+        function hideModal(modalId) {
+            const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+            if (modal) modal.hide();
+        }
+    </script>
+</body>
+</html>
