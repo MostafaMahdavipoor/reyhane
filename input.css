@@ -1,0 +1,79 @@
+/* =================================================================== */
+/* 1. FONT DEFINITIONS (Self-hosted Vazirmatn)                     */
+/* =================================================================== */
+/* Make sure you have a 'fonts' folder with the woff2 files inside it */
+
+/* Vazirmatn Weight 300 */
+@font-face {
+  font-display: swap;
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/vazirmatn-v10-latin-300.woff2') format('woff2');
+}
+/* Vazirmatn Weight 400 (Regular) */
+@font-face {
+  font-display: swap;
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/vazirmatn-v10-latin-regular.woff2') format('woff2');
+}
+/* Vazirmatn Weight 500 */
+@font-face {
+  font-display: swap;
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/vazirmatn-v10-latin-500.woff2') format('woff2');
+}
+/* Vazirmatn Weight 600 */
+@font-face {
+  font-display: swap;
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/vazirmatn-v10-latin-600.woff2') format('woff2');
+}
+/* Vazirmatn Weight 700 (Bold) */
+@font-face {
+  font-display: swap;
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/vazirmatn-v10-latin-700.woff2') format('woff2');
+}
+
+/* =================================================================== */
+/* 2. TAILWIND DIRECTIVES                                            */
+/* =================================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =================================================================== */
+/* 3. YOUR CUSTOM STYLES                                             */
+/* =================================================================== */
+body { font-family: "Vazirmatn", sans-serif; }
+.gradient-text { @apply bg-gradient-to-r from-emerald-500 to-blue-500; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.gradient-bg { background: linear-gradient(135deg, #10b981, #3b82f6, #6366f1); }
+.floating-animation { animation: float 3s ease-in-out infinite; }
+.pulse-animation { animation: pulse 2s infinite; }
+.text-shadow { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); } 
+.glass-header { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.glass-button {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #1f2937; /* رنگ متن تیره برای خوانایی */
+    transition: all 0.3s ease-in-out;
+}
+.glass-button:hover {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
