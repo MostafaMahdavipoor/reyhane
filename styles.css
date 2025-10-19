@@ -1,0 +1,351 @@
+/*
+ * فایل استایل‌های اصلی
+ * شامل متغیرهای رنگ، استایل‌های پایه، بخش‌ها و مدیا کوئری‌ها.
+ */
+
+/* !! نقطه سفارشی‌سازی: پالت رنگی
+  کدهای رنگی زیر را برای تغییر تم وب‌سایت تغییر دهید.
+*/
+:root {
+    --font-family: 'Vazirmatn', sans-serif;
+    --bg-color: #fdfdfd;
+    --bg-alt-color: #f7f9fc;
+    --text-color: #333;
+    --text-light-color: #555;
+    --primary-color: #6a89cc; /* یک آبی/بنفش ملایم */
+    --primary-dark: #536da8;
+    --border-color: #eaeaea;
+    --nav-height: 60px;
+}
+
+/* --- استایل‌های پایه --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    direction: rtl; /* اطمینان از راست‌چین بودن */
+    text-align: right; /* هم‌ترازی پیش‌فرض متن */
+}
+
+/* --- ابزارها و کانتینر --- */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+/* خط زیرین برای عناوین بخش‌ها */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- ناوبری (Header) --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+header nav a {
+    color: var(--text-light-color);
+    font-weight: 500;
+    padding: 0.5rem;
+    font-size: 0.95rem;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- انیمیشن محو شدن (Fade-in) --- */
+section {
+    padding: 5rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* بخش‌های با رنگ پس‌زمینه متفاوت */
+.alt-section {
+    background-color: var(--bg-alt-color);
+}
+
+/* --- بخش Hero (#home) --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: var(--nav-height); /* برای جبران هدر ثابت */
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 5px solid var(--bg-color);
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light-color);
+    font-weight: 300;
+}
+
+/* --- بخش درباره مدرس (#about) --- */
+.typewriter-text {
+    font-size: 1.1rem;
+    line-height: 2.2;
+    color: var(--text-light-color);
+    white-space: pre-wrap; /* برای حفظ شکست خطوط */
+    min-height: 100px; /* جلوگیری از پرش محتوا */
+}
+
+/* نشانگر تایپ */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--text-color);
+    animation: blink 0.7s infinite;
+    margin-right: 5px; /* در حالت RTL در سمت راست قرار می‌گیرد */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- بخش سوابق (#resume) --- */
+.resume-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.resume-list li {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.25rem;
+    padding-right: 2rem; /* فضا برای آیکون */
+    position: relative;
+    opacity: 0; /* در ابتدا مخفی */
+    animation: fadeInListItem 0.5s forwards; /* انیمیشن برای هر آیتم */
+}
+
+/* انیمیشن برای آیتم‌های لیست */
+@keyframes fadeInListItem {
+    to {
+        opacity: 1;
+    }
+}
+
+/* تیک جلوی هر آیتم لیست */
+.resume-list li::before {
+    content: '\f00c'; /* کد یونیکد FontAwesome برای تیک */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--primary-color);
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 1rem;
+}
+
+/* --- بخش تماس (#contact) --- */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.contact-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-light-color);
+    font-size: 1rem;
+    min-width: 80px;
+}
+
+.contact-links a i {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.contact-links a:hover i {
+    transform: scale(1.1);
+}
+
+.contact-links a:hover span {
+    color: var(--primary-color);
+}
+
+/* --- فوتر --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #333;
+    color: #eee;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+}
+
+/* --- طراحی واکنش‌گرا (Responsive) --- */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px; /* کمی کوچک کردن فونت پایه */
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+
+    header {
+        padding: 0 1rem;
+    }
+
+    header nav {
+        gap: 0.5rem; /* کاهش فاصله لینک‌های ناوبری */
+    }
+
+    header nav a {
+        padding: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .typewriter-text {
+        font-size: 1rem;
+        line-height: 2;
+    }
+
+    .resume-list li {
+        font-size: 1rem;
+        padding-right: 1.75rem;
+    }
+
+    .resume-list li::before {
+        top: 4px;
+    }
+
+    .contact-links {
+        gap: 2rem;
+    }
+}
