@@ -8,12 +8,9 @@
     <title>ریحانه زراعتکار - مدرس عربی</title>
     <meta name="description" content="وب‌سایت شخصی ریحانه زراعتکار، مدرس باسابقه عربی کنکور و متوسطه، مدرس حل تمرین صرف و نحو دانشگاه فردوسی.">
 
-    <!-- Preload تصویر پروفایل با اولویت بالا -->
-    <link rel="preload" fetchpriority="high" as="image" href="assets/profile.jpg" type="image/jpeg">
-
-    <!-- Critical CSS Inline - بدون هیچ فونت خارجی -->
+    <!-- Critical CSS Inline -->
     <style>
-        /* متغیرهای اصلی - فقط فونت‌های سیستم */
+        /* متغیرهای اصلی */
         :root {
             --font-family: Tahoma, 'Segoe UI', 'Iranian Sans', Arial, sans-serif;
             --bg-color: #fdfdfd;
@@ -37,7 +34,7 @@
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: var(--font-family),serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.7;
@@ -172,7 +169,15 @@
 
 <section id="home" class="hero">
     <div class="profile-photo">
-        <img src="assets/profile.jpg" alt="تصویر پروفایل ریحانه زراعتکار" fetchpriority="high">
+        <!-- 
+        ⚠️ جایگزین کنید: 
+        تصویر خود را به Base64 تبدیل کنید و در data:image/webp;base64,... قرار دهید
+        برای تبدیل به: https://base64.guru/converter/encode/image
+        -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236a89cc'/%3E%3Cstop offset='100%25' style='stop-color:%23536da8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='60' font-weight='bold' fill='white'%3Eر.ز%3C/text%3E%3C/svg%3E"
+             alt="تصویر پروفایل ریحانه زراعتکار"
+             width="200"
+             height="200">
     </div>
 
     <h1>ریحانه زراعتکار</h1>
