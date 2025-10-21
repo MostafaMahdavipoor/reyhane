@@ -1,8 +1,4 @@
-# robots.txt - ریحانه زراعتکار
-
-# اجازه دسترسی به همه موتورهای جستجو
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://reyhanezeraatkar.ir/sitemap.xml
