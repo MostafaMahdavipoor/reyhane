@@ -8,12 +8,7 @@
     <title>ریحانه زراعتکار - مدرس عربی</title>
     <meta name="description" content="وب‌سایت شخصی ریحانه زراعتکار، مدرس باسابقه عربی کنکور و متوسطه، مدرس حل تمرین صرف و نحو دانشگاه فردوسی.">
 
-    <!-- Preload تصویر پروفایل با اولویت بالا -->
-    <link rel="preload" fetchpriority="high" as="image" href="assets/profile.jpg" type="image/jpeg">
-
-    <!-- Critical CSS Inline - بدون هیچ فونت خارجی -->
     <style>
-        /* متغیرهای اصلی - فقط فونت‌های سیستم */
         :root {
             --font-family: Tahoma, 'Segoe UI', 'Iranian Sans', Arial, sans-serif;
             --bg-color: #fdfdfd;
@@ -147,16 +142,13 @@
         }
     </style>
 
-    <!-- Font Awesome با بارگذاری غیرمسدودکننده -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
 
-    <!-- فایل CSS اصلی با بارگذاری غیرمسدودکننده -->
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
-    <!-- JavaScript با defer -->
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -170,51 +162,54 @@
     </nav>
 </header>
 
-<section id="home" class="hero">
-    <div class="profile-photo">
-        <img src="assets/profile.webp" alt="تصویر پروفایل ریحانه زراعتکار" fetchpriority="high">
-    </div>
+<main>
 
-    <h1>ریحانه زراعتکار</h1>
-    <p class="subtitle">مدرس عربی — مدرس حل تمرین صرف و نحو</p>
-</section>
-
-<section id="about">
-    <div class="container">
-        <h2>درباره مدرس</h2>
-        <p id="typewriter-about" class="typewriter-text"></p>
-    </div>
-</section>
-
-<section id="resume" class="alt-section">
-    <div class="container">
-        <h2>سوابق و تجربیات</h2>
-        <ul id="typewriter-resume" class="resume-list">
-        </ul>
-    </div>
-</section>
-
-<section id="contact">
-    <div class="container">
-        <h2>راه‌های ارتباطی</h2>
-        <div class="contact-links">
-
-            <a href="https://t.me/ZReyanZrrzre" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-telegram"></i>
-                <span>تلگرام</span>
-            </a>
-
-            <a href="tel:+989123456789">
-                <i class="fas fa-phone"></i>
-                <span>تماس</span>
-            </a>
-
+    <section id="home" class="hero">
+        <div class="profile-photo">
+            <img src="assets/profile.webp" alt="تصویر پروفایل ریحانه زراعتکار" fetchpriority="high">
         </div>
-    </div>
-</section>
 
+        <h1>ریحانه زراعتکار</h1>
+        <p class="subtitle">مدرس عربی — مدرس حل تمرین صرف و نحو</p>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>درباره مدرس</h2>
+            <p id="typewriter-about" class="typewriter-text"></p>
+        </div>
+    </section>
+
+    <section id="resume" class="alt-section">
+        <div class="container">
+            <h2>سوابق و تجربیات</h2>
+            <ul id="typewriter-resume" class="resume-list">
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>راه‌های ارتباطی</h2>
+            <div class="contact-links">
+
+                <a href="https://t.me/ZReyanZrrzre" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram"></i>
+                    <span>تلگرام</span>
+                </a>
+
+                <a href="tel:+989123456789">
+                    <i class="fas fa-phone"></i>
+                    <span>تماس</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+</main>
 <footer>
-    <p>&copy; ۱۴۰۳ - تمام حقوق برای ریحانه زراعتکار محفوظ است.</p>
+    <p>&copy; ۱۴۰۴ - تمام حقوق برای ریحانه زراعتکار محفوظ است.</p>
 </footer>
 
 </body>
