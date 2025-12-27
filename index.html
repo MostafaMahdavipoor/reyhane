@@ -3,153 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="ctv_IJH3NpMrzGcNZXbOjqigdbtx-sJa8JcjX6OIApM" />
-
     <title>ریحانه زراعتکار - مدرس عربی</title>
     <meta name="description" content="وب‌سایت شخصی ریحانه زراعتکار، مدرس باسابقه عربی کنکور و متوسطه، مدرس حل تمرین صرف و نحو دانشگاه فردوسی.">
-
     <style>
         :root {
-            --font-family: Tahoma, 'Segoe UI', 'Iranian Sans', Arial, sans-serif;
-            --bg-color: #fdfdfd;
-            --text-color: #333;
-            --text-light-color: #555;
-            --primary-color: #6a89cc;
-            --primary-dark: #536da8;
-            --nav-height: 60px;
+            --primary: #ffff00;
+            --primary-dark: #e6e600;
+            --text: #e0e0e0;
+            --text-light: #b0b0b0;
+            --bg: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --shadow: rgba(255,255,0,0.2);
         }
-
-        /* Reset پایه */
-        *,*::before,*::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            direction: rtl;
-            text-align: right;
-        }
-
-        /* Header - CRITICAL */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        header nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        header nav a {
-            color: var(--text-light-color);
-            font-weight: 500;
-            padding: 0.5rem;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        header nav a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section - CRITICAL */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: var(--nav-height);
-        }
-
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 5px solid var(--bg-color);
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .hero .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light-color);
-            font-weight: 400;
-        }
-
-        /* Container - CRITICAL */
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        /* Mobile styles - CRITICAL */
-        @media (max-width: 768px) {
-            html { font-size: 15px; }
-            header nav { gap: 0.5rem; }
-            header nav a { padding: 0.25rem; font-size: 0.9rem; }
-            .hero { min-height: 90vh; }
-            .profile-photo { width: 150px; height: 150px; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero .subtitle { font-size: 1rem; }
-            .container { padding: 0 1rem; }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:Tahoma,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;direction:rtl}
+        header{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(10,10,10,0.95);backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(255,255,0,0.1);z-index:1000;display:flex;justify-content:center;align-items:center;border-bottom:1px solid rgba(255,255,0,0.2)}
+        header nav{display:flex;gap:1.5rem}
+        header nav a{color:var(--text-light);font-weight:500;padding:0.5rem;font-size:0.95rem;text-decoration:none;transition:color 0.3s}
+        header nav a:hover{color:var(--primary)}
+        .hero{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:80px 1.5rem 2rem;gap:3rem}
+        .hero-content{display:flex;align-items:center;gap:3rem;max-width:1200px;width:100%;flex-wrap:wrap;justify-content:center}
+        .profile-section{text-align:center;flex-shrink:0}
+        .profile-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;margin:0 auto 1rem;box-shadow:0 10px 30px var(--shadow),0 0 40px rgba(255,255,0,0.3);border:5px solid var(--primary)}
+        .profile-photo img{width:100%;height:100%;object-fit:cover}
+        .hero-text h1{font-size:2.8rem;font-weight:700;margin-bottom:0.5rem}
+        .hero-text .subtitle{font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem}
+        .info-cards{display:flex;flex-direction:column;gap:1rem;min-width:280px}
+        .info-card{background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:var(--text);padding:1.5rem;border-radius:12px;box-shadow:0 4px 15px var(--shadow);border:2px solid var(--primary);transition:transform 0.3s,box-shadow 0.3s}
+        .info-card:hover{transform:translateY(-5px);box-shadow:0 8px 25px rgba(255,255,0,0.4)}
+        .info-card h3{font-size:1.1rem;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;color:var(--primary)}
+        .info-card ul{list-style:none;padding-right:1.5rem}
+        .info-card li{margin:0.4rem 0;font-size:0.95rem;opacity:0.95}
+        .info-card li::before{content:"✓";margin-left:0.5rem;font-weight:bold;color:var(--primary)}
+        .container{max-width:960px;margin:0 auto;padding:4rem 1.5rem}
+        section{padding:2rem 0}
+        .alt-section{background:#151515}
+        h2{font-size:2.2rem;font-weight:700;margin-bottom:1.5rem;color:var(--primary)}
+        p{margin-bottom:1rem;font-size:1.05rem}
+        .resume-list{list-style:none;padding:0}
+        .resume-list li{padding:1rem;margin:0.8rem 0;background:var(--bg-card);border-radius:8px;box-shadow:0 2px 8px rgba(255,255,0,0.1);border-right:4px solid var(--primary);transition:transform 0.3s,box-shadow 0.3s}
+        .resume-list li:hover{transform:translateX(-5px);box-shadow:0 4px 12px rgba(255,255,0,0.3)}
+        .contact-links{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem}
+        .contact-links a{display:flex;align-items:center;gap:0.8rem;padding:1rem 2rem;background:var(--primary);color:#0a0a0a;text-decoration:none;border-radius:8px;transition:all 0.3s;box-shadow:0 4px 10px var(--shadow);font-weight:600}
+        .contact-links a:hover{background:var(--primary-dark);transform:translateY(-3px);box-shadow:0 6px 20px rgba(255,255,0,0.5)}
+        .contact-links i{font-size:1.3rem}
+        footer{background:#000;color:var(--text-light);text-align:center;padding:2rem;margin-top:3rem;border-top:2px solid var(--primary)}
+        @media (max-width:768px){
+            html{font-size:15px}
+            header nav{gap:0.5rem}
+            header nav a{padding:0.25rem;font-size:0.9rem}
+            .hero{padding:70px 1rem 1rem}
+            .hero-content{gap:2rem}
+            .profile-photo{width:150px;height:150px}
+            .hero-text h1{font-size:2.2rem}
+            .hero-text .subtitle{font-size:1rem}
+            .info-cards{min-width:100%;width:100%}
+            .container{padding:2rem 1rem}
+            .contact-links{justify-content:center}
         }
     </style>
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
-
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-
-    <script defer src="script.js"></script>
 </head>
 <body>
 
@@ -163,27 +76,61 @@
 </header>
 
 <main>
-
     <section id="home" class="hero">
-        <div class="profile-photo">
-            <img src="assets/profile.webp" alt="تصویر پروفایل ریحانه زراعتکار" fetchpriority="high">
+        <div class="hero-content">
+            <div class="profile-section">
+                <div class="profile-photo">
+                    <img src="assets/profile.webp" alt="ریحانه زراعتکار" loading="eager">
+                </div>
+                <div class="hero-text">
+                    <h1>ریحانه زراعتکار</h1>
+                    <p class="subtitle">مدرس عربی — مدرس حل تمرین صرف و نحو</p>
+                </div>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>📚 تخصص‌های آموزشی</h3>
+                    <ul>
+                        <li>عربی کنکور و متوسطه</li>
+                        <li>صرف و نحو دانشگاهی</li>
+                        <li>حل تمرین تخصصی</li>
+                        <li>آمادگی آزمون‌های ورودی</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🎯 مهارت‌های کلیدی</h3>
+                    <ul>
+                        <li>تدریس خصوصی و گروهی</li>
+                        <li>تهیه محتوای آموزشی</li>
+                        <li>مشاوره تحصیلی</li>
+                        <li>برنامه‌ریزی درسی</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <h1>ریحانه زراعتکار</h1>
-        <p class="subtitle">مدرس عربی — مدرس حل تمرین صرف و نحو</p>
     </section>
 
     <section id="about">
         <div class="container">
             <h2>درباره مدرس</h2>
-            <p id="typewriter-about" class="typewriter-text"></p>
+            <p>سلام! من ریحانه زراعتکار هستم، مدرس عربی با چندین سال سابقه تدریس. تخصص من آموزش عربی به دانش‌آموزان متوسطه و داوطلبان کنکور است. همچنین به عنوان مدرس حل تمرین صرف و نحو در دانشگاه فردوسی مشهد فعالیت دارم.</p>
+            <p>هدف من کمک به شما برای یادگیری عمیق و درک بهتر زبان عربی است. با روش‌های نوین تدریس و توجه به نیازهای فردی هر دانش‌آموز، سعی می‌کنم یادگیری را لذت‌بخش و مؤثر کنم.</p>
+            <p>اگر به دنبال بهبود سطح عربی خود هستید یا برای آزمون‌های مهم آماده می‌شوید، خوشحال می‌شوم در این مسیر همراه شما باشم.</p>
         </div>
     </section>
 
     <section id="resume" class="alt-section">
         <div class="container">
             <h2>سوابق و تجربیات</h2>
-            <ul id="typewriter-resume" class="resume-list">
+            <ul class="resume-list">
+                <li>📖 مدرس عربی پایه‌های متوسطه اول و دوم</li>
+                <li>🎓 مدرس حل تمرین صرف و نحو دانشگاه فردوسی مشهد</li>
+                <li>👨‍🎓 مدرس خصوصی عربی کنکور با سابقه چند ساله</li>
+                <li>📝 تهیه‌کننده محتوای آموزشی و نمونه سوالات</li>
+                <li>💡 مشاوره و برنامه‌ریزی درسی برای دانش‌آموزان</li>
+                <li>🏆 موفقیت در قبولی دانش‌آموزان در آزمون‌های ورودی</li>
             </ul>
         </div>
     </section>
@@ -191,23 +138,21 @@
     <section id="contact">
         <div class="container">
             <h2>راه‌های ارتباطی</h2>
+            <p>برای مشاوره رایگان، ثبت‌نام در کلاس‌ها یا هرگونه سؤال، از طریق راه‌های زیر با من در تماس باشید:</p>
             <div class="contact-links">
-
-                <a href="https://t.me/ZReyanZrrzre" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-telegram"></i>
+                <a href="https://t.me/ZReyanZrrzre" target="_blank" rel="noopener">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
                     <span>تلگرام</span>
                 </a>
-
                 <a href="tel:+989123456789">
-                    <i class="fas fa-phone"></i>
-                    <span>تماس</span>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>تماس تلفنی</span>
                 </a>
-
             </div>
         </div>
     </section>
-
 </main>
+
 <footer>
     <p>&copy; ۱۴۰۴ - تمام حقوق برای ریحانه زراعتکار محفوظ است.</p>
 </footer>
