@@ -2,14 +2,11 @@ name = "reyhane"
 compatibility_date = "2024-01-01"
 pages_build_output_dir = "."
 
-[[d1_databases]]
-binding = "DB"
-database_name = "reyhane-registrations"
-database_id = "00000000-0000-0000-0000-000000000000"
-
-[[r2_buckets]]
-binding = "RECEIPTS"
-bucket_name = "reyhane-receipts"
+# D1 and R2 bindings must be added in Cloudflare Dashboard:
+# Pages > Project > Settings > Functions > D1/R2 bindings
+#   D1:  binding name "DB", database "reyhane-registrations"
+#   R2:  binding name "RECEIPTS", bucket "reyhane-receipts"
+# Environment variable: ADMIN_PASSWORD
 
 [vars]
 MAX_CAPACITY = "20"

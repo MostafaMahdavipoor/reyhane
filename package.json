@@ -2,6 +2,7 @@
   "name": "reyhane",
   "private": true,
   "scripts": {
+    "build": "echo 'Static site — no build step required'",
     "dev": "wrangler pages dev . --d1=DB --r2=RECEIPTS",
     "deploy": "wrangler pages deploy .",
     "db:migrate": "wrangler d1 execute reyhane-registrations --remote --file=./schema.sql",
