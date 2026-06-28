@@ -11,12 +11,13 @@
     <link rel="icon" type="image/png" href="assets/profile.png">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="course-page">
 
 <header>
     <nav>
         <a href="index.html">خانه</a>
-        <a href="#course" class="active">دوره</a>
+        <a href="#intro" class="active">معرفی</a>
+        <a href="#syllabus">سرفصل‌ها</a>
         <a href="#instructor">مدرس</a>
         <a href="#contact" class="nav-highlight">ثبت‌نام</a>
     </nav>
@@ -24,146 +25,244 @@
 
 <main>
     <!-- Hero -->
-    <section class="course-page-hero">
+    <section class="course-hero">
+        <div class="course-hero-bg"></div>
         <div class="container">
-            <div class="course-page-hero-inner">
-                <div class="course-page-hero-text">
-                    <p class="course-tag">دوره آموزش عربی کاربردی</p>
-                    <h1>هم‌زبان اربعین</h1>
-                    <div class="course-hero-banner">هم‌قدم تا حرم</div>
-                    <p class="course-lead">
-                        آیا دوست دارید در سفر اربعین امسال، دغدغه برقراری ارتباط نداشته باشید
-                        و به راحتی با میزبانان عراقی هم‌کلام شوید؟
+            <div class="course-hero-grid">
+                <div class="course-hero-content">
+                    <span class="badge">دوره آموزش عربی کاربردی</span>
+                    <h1>هم‌زبان <span class="highlight">اربعین</span></h1>
+                    <p class="slogan-line">هم‌قدم تا حرم</p>
+                    <p class="hero-desc">
+                        در سفر اربعین، دغدغه زبان نداشته باشید. این دوره دقیقاً همان چیزی است
+                        که برای یک سفر بی‌دغدغه و شیرین نیاز دارید — بدون قواعد سخت، فقط
+                        مکالمات واقعی سفر.
                     </p>
-                    <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-primary">
-                        <svg class="icon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:currentColor;fill:none;"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                    <div class="hero-stats">
+                        <div class="stat-pill">
+                            <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <span><strong>۱۰</strong> جلسه</span>
+                        </div>
+                        <div class="stat-pill">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>ظرفیت <strong>۲۰</strong> نفر</span>
+                        </div>
+                        <div class="stat-pill">
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>مشهد</span>
+                        </div>
+                    </div>
+                    <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                         ارتباط با مدرس — @zrtkar
                     </a>
                 </div>
-                <div class="course-page-hero-poster">
-                    <img src="assets/arbaeen-poster.png" alt="پوستر دوره هم‌زبان اربعین">
+                <div class="course-hero-poster">
+                    <div class="poster-frame">
+                        <img src="assets/arbaeen-poster.png" alt="پوستر دوره هم‌زبان اربعین">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Course details -->
-    <section id="course" class="alt-bg">
+    <!-- Why this course -->
+    <section id="intro" class="section-block">
         <div class="container">
-            <h2>چرا این دوره برای شماست؟</h2>
-            <ul class="course-benefits">
-                <li>بدون نیاز به پیش‌زمینه — اصلاً نیازی به دانستن قواعد سخت و پیچیده عربی ندارید</li>
-                <li>کاملاً کاربردی — فقط چیزهایی که در سفر نیاز دارید (مسیر، اسکان، موکب، خرید و درمان)</li>
-                <li>مناسب برای همه سنین — با هر سن و سالی می‌توانید مکالمات را یاد بگیرید</li>
-                <li>۱۰ جلسه کاربردی — بدون کلاس‌های طولانی و ترم‌محور</li>
-                <li>تدریس با روش منحصربه‌فرد توسط استاد باتجربه</li>
-            </ul>
-
-            <h2 style="margin-top: 3rem;">سرفصل‌های آموزشی</h2>
-            <div class="course-features">
-                <div class="feature-item">
-                    <div class="emoji">🏥</div>
-                    <h4>درمان و اضطراری</h4>
-                    <p>شرایط پزشکی و اورژانس در سفر</p>
+            <div class="section-head">
+                <span class="section-label">چرا این دوره؟</span>
+                <h2>برای سفری راحت‌تر به کربلا</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>بدون پیش‌زمینه</h3>
+                    <p>نیازی به دانستن قواعد سخت و پیچیده عربی ندارید. از صفر شروع می‌کنیم.</p>
                 </div>
-                <div class="feature-item">
-                    <div class="emoji">🛒</div>
-                    <h4>خوراک و خرید</h4>
-                    <p>خرید، سفارش غذا و بازار</p>
+                <div class="benefit-card">
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>کاملاً کاربردی</h3>
+                    <p>فقط چیزهایی که در سفر واقعاً نیاز دارید: مسیر، اسکان، موکب، خرید و درمان.</p>
                 </div>
-                <div class="feature-item">
-                    <div class="emoji">⛺</div>
-                    <h4>موکب و اسکان</h4>
-                    <p>اقامت، موکب‌ها و کاروان</p>
+                <div class="benefit-card">
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                    </div>
+                    <h3>مناسب همه سنین</h3>
+                    <p>با هر سن و سالی می‌توانید به راحتی مکالمات سفر را یاد بگیرید.</p>
                 </div>
-                <div class="feature-item">
-                    <div class="emoji">📍</div>
-                    <h4>مسیر و آدرس</h4>
-                    <p>راهنمایی، مسیریابی و آدرس</p>
+                <div class="benefit-card">
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h3>روش منحصربه‌فرد</h3>
+                    <p>تدریس با روش اختصاصی استاد، بدون کلاس‌های خسته‌کننده ترم‌محور.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="course-details-grid">
-                <div class="info-card">
-                    <h3>🗓 جزئیات برگزاری</h3>
-                    <p class="text-muted">۱۰ جلسه کاربردی — دو کد آموزشی:</p>
-                    <ul style="list-style:none; margin-top:0.75rem;">
-                        <li style="padding:0.4rem 0; color:var(--text-muted);">🔸 <strong class="text-gold">کد اول:</strong> شنبه، دوشنبه و چهارشنبه</li>
-                        <li style="padding:0.4rem 0; color:var(--text-muted);">🔸 <strong class="text-gold">کد دوم:</strong> سه‌شنبه و پنج‌شنبه</li>
-                    </ul>
-                    <p class="text-muted" style="font-size:0.85rem; margin-top:0.75rem;">
-                        ساعت دقیق برگزاری پس از نظرسنجی ثبت‌نام‌کنندگان مشخص می‌شود.
-                    </p>
+    <!-- Syllabus -->
+    <section id="syllabus" class="section-block alt-bg">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-label">سرفصل‌های آموزشی</span>
+                <h2>چه چیزهایی یاد می‌گیرید؟</h2>
+                <p class="section-desc">چهار حوزه اصلی که هر زائر در مسیر اربعین با آن روبه‌رو می‌شود</p>
+            </div>
+            <div class="syllabus-grid">
+                <article class="syllabus-card">
+                    <div class="syllabus-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>درمان و شرایط اضطراری</h3>
+                    <p>بیان علائم، درخواست کمک پزشکی، مراجعه به اورژانس و ارتباط با کادر درمانی</p>
+                </article>
+                <article class="syllabus-card">
+                    <div class="syllabus-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    </div>
+                    <h3>خوراک و خرید</h3>
+                    <p>سفارش غذا، خرید از بازار و مغازه، پرسیدن قیمت و تشکر و احترام</p>
+                </article>
+                <article class="syllabus-card">
+                    <div class="syllabus-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>موکب و اسکان</h3>
+                    <p>پیدا کردن موکب، درخواست اسکان، هماهنگی با کاروان و میزبانان</p>
+                </article>
+                <article class="syllabus-card">
+                    <div class="syllabus-icon">
+                        <svg class="icon" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                    </div>
+                    <h3>مسیر و آدرس</h3>
+                    <p>پرسیدن آدرس، راهنمایی گرفتن، فهم علائم و اعلان‌های مسیر پیاده‌روی</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule & details -->
+    <section class="section-block">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-label">جزئیات برگزاری</span>
+                <h2>برنامه کلاس‌ها</h2>
+            </div>
+            <div class="details-row">
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <h3>دو کد آموزشی</h3>
+                    </div>
+                    <div class="schedule-codes">
+                        <div class="code-item">
+                            <span class="code-num">کد ۱</span>
+                            <span class="code-days">شنبه · دوشنبه · چهارشنبه</span>
+                        </div>
+                        <div class="code-item">
+                            <span class="code-num">کد ۲</span>
+                            <span class="code-days">سه‌شنبه · پنج‌شنبه</span>
+                        </div>
+                    </div>
+                    <p class="detail-note">ساعت دقیق برگزاری پس از نظرسنجی ثبت‌نام‌کنندگان نهایی مشخص می‌شود.</p>
                 </div>
-                <div class="info-card">
-                    <h3>📍 مکان برگزاری</h3>
-                    <p class="text-muted" style="font-size:1.05rem; margin-top:0.5rem;">
-                        <strong class="text-light">مشهد</strong> — محدوده خیابان راهنمایی
-                    </p>
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <h3>مکان برگزاری</h3>
+                    </div>
+                    <p class="detail-main">مشهد</p>
+                    <p class="detail-sub">محدوده خیابان راهنمایی</p>
                 </div>
-                <div class="info-card">
-                    <h3>💰 شهریه دوره</h3>
-                    <div class="price-old" style="margin-top:0.5rem;">۳,۰۰۰,۰۰۰ تومان</div>
-                    <div class="price-new" style="font-size:1.5rem;">۲,۵۰۰,۰۰۰ تومان</div>
-                    <p class="text-muted" style="font-size:0.85rem; margin-top:0.5rem;">ظرفیت محدود — ۲۰ نفر</p>
+                <div class="detail-card detail-card-price">
+                    <div class="detail-header">
+                        <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <h3>شهریه دوره</h3>
+                    </div>
+                    <p class="price-old">۳,۰۰۰,۰۰۰ تومان</p>
+                    <p class="price-new">۲,۵۰۰,۰۰۰ <small>تومان</small></p>
+                    <p class="detail-note">ظرفیت محدود — ۲۰ نفر</p>
                 </div>
             </div>
-
-            <div class="alert alert-warning" style="margin-top: 2rem; text-align: center;">
-                ⚠️ برای حفظ کیفیت آموزش، ظرفیت فقط ۲۰ نفر است. اولویت با کسانی است که زودتر ثبت‌نام کنند.
+            <div class="notice-box">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p>برای حفظ کیفیت آموزش و تعامل بهتر در کلاس، ظرفیت فقط ۲۰ نفر است. اولویت با عزیزانی است که زودتر ثبت‌نام خود را قطعی کنند.</p>
             </div>
         </div>
     </section>
 
     <!-- Instructor -->
-    <section id="instructor">
+    <section id="instructor" class="section-block alt-bg">
         <div class="container">
-            <h2>مدرس دوره</h2>
-            <div class="instructor-card">
-                <div class="instructor-photo">
-                    <img src="assets/profile.png" alt="ریحانه زراعتکار" width="160" height="160">
+            <div class="section-head">
+                <span class="section-label">مدرس دوره</span>
+                <h2>ریحانه زراعتکار</h2>
+            </div>
+            <div class="instructor-block">
+                <div class="instructor-visual">
+                    <div class="instructor-ring">
+                        <img src="assets/profile.png" alt="ریحانه زراعتکار" width="180" height="180">
+                    </div>
                 </div>
-                <div class="instructor-info">
-                    <h3>ریحانه زراعتکار</h3>
-                    <p class="instructor-title">مدرس زبان عربی — دانشگاه فردوسی مشهد</p>
+                <div class="instructor-body">
+                    <p class="instructor-role">مدرس زبان عربی — دانشگاه فردوسی مشهد</p>
                     <p class="text-muted">
                         مدرس باسابقه عربی کنکور، متوسطه و حل تمرین صرف و نحو در دانشگاه فردوسی مشهد.
-                        تخصص در ساده‌سازی قواعد پیچیده عربی و آموزش کاربردی برای زائران.
+                        تخصص در ساده‌سازی قواعد پیچیده عربی و طراحی دوره‌های کاربردی برای زائران.
                     </p>
-                    <ul class="instructor-highlights">
-                        <li>مدرس حل تمرین صرف و نحو — دانشگاه فردوسی مشهد</li>
-                        <li>مدرس عربی کنکور و متوسطه</li>
-                        <li>طراح محتوای آموزشی و جزوات تخصصی</li>
+                    <ul class="credential-list">
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            مدرس حل تمرین صرف و نحو — دانشگاه فردوسی مشهد
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            مدرس عربی کنکور و متوسطه اول و دوم
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            مولف جزوات آموزشی و طراح نمونه‌سوالات
+                        </li>
                     </ul>
-                    <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:1rem;">
-                        پیام در تلگرام — @zrtkar
+                    <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-outline">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        @zrtkar
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section id="contact" class="alt-bg">
-        <div class="container" style="text-align: center;">
-            <h2 style="display:block;">ثبت‌نام و ارتباط</h2>
-            <p class="text-muted" style="max-width: 550px; margin: 0 auto 2rem;">
-                برای ثبت‌نام در دوره، انتخاب کد آموزشی، یا هرگونه سؤال،
-                از طریق تلگرام با مدرس دوره در ارتباط باشید:
-            </p>
-            <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:1.1rem; padding: 1rem 2.5rem;">
-                <svg class="icon" viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;fill:none;"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-                @zrtkar
-            </a>
-            <p class="text-muted" style="margin-top: 1.5rem;">
-                یا تماس: <a href="tel:+989961301772" style="color:var(--gold);">۰۹۹۶۱۳۰۱۷۷۲</a>
-            </p>
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-inner">
+                <svg class="icon cta-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <h2>آماده‌اید هم‌زبان شوید؟</h2>
+                <p>برای ثبت‌نام، انتخاب کد آموزشی یا هرگونه سؤال، از طریق تلگرام با مدرس دوره در ارتباط باشید.</p>
+                <div class="cta-actions">
+                    <a href="https://t.me/zrtkar" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        @zrtkar
+                    </a>
+                    <a href="tel:+989961301772" class="btn btn-outline btn-lg">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        ۰۹۹۶۱۳۰۱۷۷۲
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
 
 <footer>
-    <p>&copy; ۱۴۰۴ — دوره هم‌زبان اربعین | ریحانه زراعتکار</p>
+    <p>&copy; ۱۴۰۴ — دوره هم‌زبان اربعین · ریحانه زراعتکار</p>
 </footer>
 
 </body>
