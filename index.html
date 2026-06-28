@@ -37,8 +37,8 @@
 
 <header>
     <nav>
-        <a href="#home">خانه</a>
-        <a href="#course-arbaeen" class="nav-highlight">دوره اربعین</a>
+        <a href="index.html">خانه</a>
+        <a href="course.html" class="nav-highlight">دوره اربعین</a>
         <a href="#about">درباره من</a>
         <a href="#resume">سوابق</a>
         <a href="#contact">تماس</a>
@@ -86,78 +86,14 @@
     </section>
 
     <section id="course-arbaeen" class="alt-bg">
-        <div class="container">
+        <div class="container" style="text-align: center;">
             <h2>دوره هم‌زبان اربعین</h2>
-            <div class="course-hero-banner">هم‌قدم تا حرم</div>
-
-            <div class="course-grid">
-                <div class="course-poster">
-                    <img src="assets/arbaeen-poster.png" alt="پوستر دوره هم‌زبان اربعین">
-                </div>
-
-                <div class="course-info">
-                    <p class="text-muted" style="font-size: 1.05rem; margin-bottom: 1rem;">
-                        دوره آموزش <strong class="text-gold">عربی کاربردی</strong> برای زائران کربلا — ویژه زائران حسینی در مسیر عشق.
-                        بدون نیاز به پیش‌زمینه، فقط چیزهایی که در سفر نیاز دارید!
-                    </p>
-
-                    <ul class="course-benefits">
-                        <li>بدون نیاز به پیش‌زمینه — قواعد سخت و پیچیده نداریم</li>
-                        <li>کاملاً کاربردی — مسیر، اسکان، موکب، خرید و درمان</li>
-                        <li>مناسب برای همه سنین</li>
-                        <li>۱۰ جلسه کاربردی — بدون کلاس‌های طولانی ترم‌محور</li>
-                        <li>مکان برگزاری: مشهد، محدوده خیابان راهنمایی</li>
-                    </ul>
-
-                    <div class="course-features">
-                        <div class="feature-item">
-                            <div class="emoji">🏥</div>
-                            <h4>درمان و اضطراری</h4>
-                            <p>شرایط پزشکی و اورژانس</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="emoji">🛒</div>
-                            <h4>خوراک و خرید</h4>
-                            <p>خرید و سفارش غذا</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="emoji">⛺</div>
-                            <h4>موکب و اسکان</h4>
-                            <p>اقامت و موکب‌ها</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="emoji">📍</div>
-                            <h4>مسیر و آدرس</h4>
-                            <p>راهنمایی و مسیریابی</p>
-                        </div>
-                    </div>
-
-                    <p class="text-muted" style="margin-top: 1rem;">
-                        <strong>برنامه کلاس‌ها:</strong><br>
-                        🔸 کد اول: شنبه، دوشنبه و چهارشنبه<br>
-                        🔸 کد دوم: سه‌شنبه و پنج‌شنبه<br>
-                        <small>(ساعت دقیق پس از نظرسنجی ثبت‌نام‌کنندگان مشخص می‌شود)</small>
-                    </p>
-
-                    <div class="price-box">
-                        <div class="price-old">۳,۰۰۰,۰۰۰ تومان</div>
-                        <div class="price-new">۲,۵۰۰,۰۰۰ تومان</div>
-                        <p class="text-muted" style="font-size: 0.85rem;">ظرفیت محدود — فقط ۲۰ نفر</p>
-                        <div class="capacity-bar"><div class="capacity-fill" id="capacity-fill" style="width: 0%"></div></div>
-                        <p id="capacity-info" class="text-gold" style="font-size: 0.9rem;">در حال بارگذاری...</p>
-                    </div>
-
-                    <p class="text-muted" style="text-align: center; margin-bottom: 0.5rem;">مهلت ثبت‌نام تا ۱۳ تیر ۱۴۰۵:</p>
-                    <div class="countdown" id="countdown"></div>
-
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <a href="register.html" class="btn btn-primary" id="register-btn">ثبت‌نام در دوره</a>
-                    </div>
-                    <p id="register-closed-msg" class="alert alert-warning hidden" style="margin-top: 1rem; text-align: center;">
-                        مهلت ثبت‌نام به پایان رسیده یا ظرفیت تکمیل شده است.
-                    </p>
-                </div>
-            </div>
+            <div class="course-hero-banner" style="max-width: 400px; margin: 0 auto 1.5rem;">هم‌قدم تا حرم</div>
+            <p class="text-muted" style="max-width: 600px; margin: 0 auto 1.5rem; font-size: 1.05rem;">
+                دوره ۱۰ جلسه‌ای <strong class="text-gold">عربی کاربردی</strong> برای زائران کربلا —
+                بدون پیش‌زمینه، مناسب همه سنین.
+            </p>
+            <a href="course.html" class="btn btn-primary">مشاهده معرفی دوره</a>
         </div>
     </section>
 
@@ -220,26 +156,5 @@
     <p>&copy; ۱۴۰۴ — وب‌سایت رسمی ریحانه زراعتکار</p>
 </footer>
 
-<script src="js/config.js"></script>
-<script>
-    initCountdown('countdown', handleExpired);
-
-    function handleExpired() {
-        disableRegister();
-    }
-
-    function disableRegister() {
-        const btn = document.getElementById('register-btn');
-        const msg = document.getElementById('register-closed-msg');
-        if (btn) { btn.classList.add('hidden'); }
-        if (msg) { msg.classList.remove('hidden'); }
-    }
-
-    fetchCourseStatus().then(data => {
-        if (!data) return;
-        updateCapacityDisplay(data);
-        if (!data.registrationOpen) disableRegister();
-    });
-</script>
 </body>
 </html>

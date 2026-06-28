@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin.html
-Disallow: /api/
 
-Sitemap: https://reihanehzeraatkar.ir/sitemap.xml
+Sitemap: https://reyhanezeraatkar.ir/sitemap.xml
