@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت | ریحانه زراعتکار</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="assets/profile.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html">خانه</a>
+        <a href="#" id="logout-btn" class="hidden" onclick="logout()">خروج</a>
+    </nav>
+</header>
+
+<main class="page-main">
+    <div class="admin-layout">
+        <!-- Login -->
+        <div id="login-section" class="form-card" style="max-width: 400px;">
+            <h2 style="display: block; text-align: center; margin-bottom: 1.5rem;">ورود به پنل مدیریت</h2>
+            <div id="login-alert" class="hidden"></div>
+            <div class="form-group">
+                <label for="password">رمز عبور</label>
+                <input type="password" id="password" placeholder="رمز عبور ادمین">
+            </div>
+            <button type="button" class="btn btn-primary" style="width: 100%;" onclick="login()">ورود</button>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard-section" class="hidden">
+            <h2 style="display: block; margin-bottom: 1.5rem;">مدیریت ثبت‌نام‌ها</h2>
+
+            <div class="stats-row" id="stats-row">
+                <div class="stat-card">
+                    <div class="value" id="stat-active">-</div>
+                    <div class="label">ثبت‌نام فعال / ۲۰</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="stat-pending">-</div>
+                    <div class="label">در انتظار بررسی</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="stat-approved">-</div>
+                    <div class="label">تایید شده</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value" id="stat-rejected">-</div>
+                    <div class="label">رد شده</div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <label>فیلتر وضعیت:</label>
+                <select id="status-filter" onchange="loadRegistrations()">
+                    <option value="">همه</option>
+                    <option value="pending" selected>در انتظار</option>
+                    <option value="approved">تایید شده</option>
+                    <option value="rejected">رد شده</option>
+                </select>
+                <button class="btn btn-outline btn-sm" onclick="loadRegistrations()">بروزرسانی</button>
+            </div>
+
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>نام</th>
+                            <th>موبایل</th>
+                            <th>تلگرام</th>
+                            <th>کد</th>
+                            <th>تاریخ</th>
+                            <th>وضعیت</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="registrations-body">
+                        <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">در حال بارگذاری...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Receipt Modal -->
+<div id="receipt-modal" class="modal-overlay hidden" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h3 style="color: var(--gold); margin-bottom: 1rem;" id="modal-title">بررسی فیش</h3>
+        <div id="modal-info" class="text-muted" style="margin-bottom: 1rem;"></div>
+        <img id="modal-receipt" alt="فیش واریزی" style="display: none;">
+        <div class="form-group" style="margin-top: 1rem;">
+            <label for="admin-note">یادداشت (اختیاری)</label>
+            <textarea id="admin-note" rows="2" placeholder="یادداشت برای این ثبت‌نام..."></textarea>
+        </div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-sm" onclick="updateStatus('approved')">تایید</button>
+            <button class="btn btn-accent btn-sm" onclick="updateStatus('rejected')">رد</button>
+            <button class="btn btn-outline btn-sm" onclick="closeModal()">بستن</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; ۱۴۰۴ — پنل مدیریت ریحانه زراعتکار</p>
+</footer>
+
+<script>
+    const SCHEDULES = { 1: 'شنبه، دو، چهار', 2: 'سه، پنج' };
+    let authToken = localStorage.getItem('admin_token');
+    let currentRegId = null;
+    let registrationsCache = [];
+
+    if (authToken) showDashboard();
+
+    async function login() {
+        const password = document.getElementById('password').value;
+        const alertEl = document.getElementById('login-alert');
+
+        try {
+            const res = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password }),
+            });
+            const data = await res.json();
+
+            if (!res.ok || !data.success) {
+                alertEl.className = 'alert alert-error';
+                alertEl.textContent = data.error || 'خطا در ورود';
+                alertEl.classList.remove('hidden');
+                return;
+            }
+
+            authToken = data.token;
+            localStorage.setItem('admin_token', authToken);
+            showDashboard();
+        } catch {
+            alertEl.className = 'alert alert-error';
+            alertEl.textContent = 'خطا در ارتباط با سرور';
+            alertEl.classList.remove('hidden');
+        }
+    }
+
+    function logout() {
+        authToken = null;
+        localStorage.removeItem('admin_token');
+        document.getElementById('login-section').classList.remove('hidden');
+        document.getElementById('dashboard-section').classList.add('hidden');
+        document.getElementById('logout-btn').classList.add('hidden');
+    }
+
+    function showDashboard() {
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('dashboard-section').classList.remove('hidden');
+        document.getElementById('logout-btn').classList.remove('hidden');
+        loadRegistrations();
+    }
+
+    function authHeaders() {
+        return { 'Authorization': 'Bearer ' + authToken, 'Content-Type': 'application/json' };
+    }
+
+    async function loadRegistrations() {
+        const status = document.getElementById('status-filter').value;
+        const url = '/api/admin/registrations' + (status ? '?status=' + status : '');
+
+        try {
+            const res = await fetch(url, { headers: authHeaders() });
+            if (res.status === 401) { logout(); return; }
+            const data = await res.json();
+
+            if (data.stats) {
+                document.getElementById('stat-active').textContent = toFa(data.stats.active) + ' / ' + toFa(data.stats.maxCapacity);
+                document.getElementById('stat-pending').textContent = toFa(data.stats.pending);
+                document.getElementById('stat-approved').textContent = toFa(data.stats.approved);
+                document.getElementById('stat-rejected').textContent = toFa(data.stats.rejected);
+            }
+
+            const tbody = document.getElementById('registrations-body');
+            const regs = data.registrations || [];
+            registrationsCache = regs;
+
+            if (regs.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-muted)">ثبت‌نامی یافت نشد</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = regs.map(r => `
+                <tr>
+                    <td>${toFa(r.id)}</td>
+                    <td>${esc(r.full_name)}</td>
+                    <td dir="ltr">${esc(r.phone)}</td>
+                    <td>${esc(r.telegram || '—')}</td>
+                    <td>کد ${toFa(r.schedule_code)}<br><small class="text-muted">${SCHEDULES[r.schedule_code] || ''}</small></td>
+                    <td><small>${formatDate(r.created_at)}</small></td>
+                    <td><span class="status-badge status-${r.status}">${statusLabel(r.status)}</span></td>
+                    <td>
+                        <button class="btn btn-outline btn-sm review-btn" data-id="${r.id}">بررسی</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            tbody.querySelectorAll('.review-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const reg = registrationsCache.find(r => r.id === parseInt(btn.dataset.id, 10));
+                    if (reg) openModal(reg);
+                });
+            });
+        } catch {
+            document.getElementById('registrations-body').innerHTML =
+                '<tr><td colspan="8" style="text-align:center;color:var(--danger)">خطا در بارگذاری</td></tr>';
+        }
+    }
+
+    function openModal(reg) {
+        currentRegId = reg.id;
+        document.getElementById('modal-title').textContent = 'بررسی — ' + reg.full_name;
+        document.getElementById('modal-info').innerHTML = `موبایل: <span dir="ltr">${esc(reg.phone)}</span> — وضعیت فعلی: <span class="status-badge status-${reg.status}">${statusLabel(reg.status)}</span>`;
+        document.getElementById('admin-note').value = reg.admin_note || '';
+
+        const img = document.getElementById('modal-receipt');
+        if (reg.receipt_key) {
+            img.src = '/api/admin/receipt/' + encodeURIComponent(reg.receipt_key);
+            img.style.display = 'block';
+        } else {
+            img.style.display = 'none';
+        }
+
+        document.getElementById('receipt-modal').classList.remove('hidden');
+    }
+
+    function closeModal(event) {
+        if (event && event.target !== event.currentTarget) return;
+        document.getElementById('receipt-modal').classList.add('hidden');
+        currentRegId = null;
+    }
+
+    async function updateStatus(status) {
+        if (!currentRegId) return;
+
+        const note = document.getElementById('admin-note').value.trim();
+
+        try {
+            const res = await fetch('/api/admin/registrations/' + currentRegId, {
+                method: 'PATCH',
+                headers: authHeaders(),
+                body: JSON.stringify({ status, admin_note: note || null }),
+            });
+            const data = await res.json();
+
+            if (!res.ok || !data.success) {
+                alert(data.error || 'خطا در به‌روزرسانی');
+                return;
+            }
+
+            closeModal();
+            loadRegistrations();
+        } catch {
+            alert('خطا در ارتباط با سرور');
+        }
+    }
+
+    function statusLabel(s) {
+        return { pending: 'در انتظار', approved: 'تایید', rejected: 'رد' }[s] || s;
+    }
+
+    function toFa(n) {
+        return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    }
+
+    function esc(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    function formatDate(iso) {
+        if (!iso) return '—';
+        try {
+            return new Date(iso + 'Z').toLocaleDateString('fa-IR', {
+                year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit',
+            });
+        } catch {
+            return iso;
+        }
+    }
+
+    document.getElementById('password').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') login();
+    });
+</script>
+</body>
+</html>

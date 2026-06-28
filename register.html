@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت‌نام دوره هم‌زبان اربعین | ریحانه زراعتکار</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="assets/profile.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html">خانه</a>
+        <a href="index.html#course-arbaeen">دوره اربعین</a>
+        <a href="index.html#contact">تماس</a>
+    </nav>
+</header>
+
+<main class="page-main">
+    <div class="container">
+        <h2 style="text-align: center; display: block; margin-bottom: 0.5rem;">ثبت‌نام دوره هم‌زبان اربعین</h2>
+        <p class="text-muted" style="text-align: center; margin-bottom: 2rem;">۱۰ جلسه عربی کاربردی برای سفر اربعین</p>
+
+        <div class="countdown" id="countdown" style="margin-bottom: 2rem;"></div>
+
+        <div id="closed-banner" class="alert alert-warning hidden" style="max-width: 600px; margin: 0 auto 2rem;">
+            مهلت ثبت‌نام به پایان رسیده یا ظرفیت تکمیل شده است.
+        </div>
+
+        <div class="form-card" id="form-container">
+            <div class="steps-indicator">
+                <div class="step-dot active" id="dot-1">۱</div>
+                <div class="step-dot" id="dot-2">۲</div>
+                <div class="step-dot" id="dot-3">۳</div>
+            </div>
+
+            <div id="alert-box" class="hidden"></div>
+
+            <!-- Step 1 -->
+            <div id="step-1">
+                <h3 style="color: var(--gold); margin-bottom: 1.25rem;">مرحله ۱ — اطلاعات شخصی</h3>
+                <div class="form-group">
+                    <label for="full_name">نام و نام خانوادگی *</label>
+                    <input type="text" id="full_name" required placeholder="مثال: علی محمدی">
+                </div>
+                <div class="form-group">
+                    <label for="phone">شماره موبایل *</label>
+                    <input type="tel" id="phone" required placeholder="۰۹۱۲۳۴۵۶۷۸۹" dir="ltr" style="text-align: left;">
+                    <p class="hint">شماره موبایل برای پیگیری ثبت‌نام استفاده می‌شود.</p>
+                </div>
+                <div class="form-group">
+                    <label for="telegram">آیدی تلگرام (اختیاری)</label>
+                    <input type="text" id="telegram" placeholder="@username" dir="ltr" style="text-align: left;">
+                </div>
+                <div class="form-actions">
+                    <span></span>
+                    <button type="button" class="btn btn-primary" onclick="goToStep(2)">مرحله بعد</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step-2" class="hidden">
+                <h3 style="color: var(--gold); margin-bottom: 1.25rem;">مرحله ۲ — انتخاب کد و پرداخت</h3>
+
+                <p class="text-muted" style="margin-bottom: 1rem;">کد آموزشی مورد نظر خود را انتخاب کنید:</p>
+                <div class="schedule-options">
+                    <label class="schedule-option">
+                        <input type="radio" name="schedule_code" value="1">
+                        <div>
+                            <strong>کد اول</strong>
+                            <p class="text-muted" style="font-size: 0.85rem;">شنبه، دوشنبه و چهارشنبه</p>
+                        </div>
+                    </label>
+                    <label class="schedule-option">
+                        <input type="radio" name="schedule_code" value="2">
+                        <div>
+                            <strong>کد دوم</strong>
+                            <p class="text-muted" style="font-size: 0.85rem;">سه‌شنبه و پنج‌شنبه</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="payment-box">
+                    <p class="text-muted">مبلغ قابل پرداخت:</p>
+                    <div class="price-new" style="font-size: 1.5rem;">۲,۵۰۰,۰۰۰ تومان</div>
+                    <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1rem 0;">
+                    <p class="text-muted">شماره کارت:</p>
+                    <div class="card-number" id="card-display">6104-3373-6473-7526</div>
+                    <p class="text-gold">به نام: ریحانه زراعتکار</p>
+                    <button type="button" class="btn btn-outline btn-sm" onclick="copyCard()" style="margin-top: 0.75rem;">کپی شماره کارت</button>
+                </div>
+
+                <p class="alert alert-warning" style="font-size: 0.85rem;">
+                    پس از واریز، در مرحله بعد تصویر فیش را بارگذاری کنید.
+                </p>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="goToStep(1)">مرحله قبل</button>
+                    <button type="button" class="btn btn-primary" onclick="goToStep(3)">واریز کردم — مرحله بعد</button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div id="step-3" class="hidden">
+                <h3 style="color: var(--gold); margin-bottom: 1.25rem;">مرحله ۳ — بارگذاری فیش واریزی</h3>
+
+                <div class="file-upload" id="file-drop-zone">
+                    <input type="file" id="receipt" accept="image/jpeg,image/png,image/webp">
+                    <div id="upload-placeholder">
+                        <p style="font-size: 2rem; margin-bottom: 0.5rem;">📷</p>
+                        <p>تصویر فیش را اینجا بکشید یا کلیک کنید</p>
+                        <p class="hint">فرمت: jpg, png, webp — حداکثر ۵ مگابایت</p>
+                    </div>
+                    <div id="upload-preview" class="hidden">
+                        <img id="preview-img" alt="پیش‌نمایش فیش" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                        <p id="file-name" class="text-muted" style="margin-top: 0.5rem;"></p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="goToStep(2)">مرحله قبل</button>
+                    <button type="button" class="btn btn-primary" id="submit-btn" onclick="submitRegistration()">ثبت‌نام نهایی</button>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div id="step-success" class="hidden" style="text-align: center; padding: 2rem 0;">
+                <p style="font-size: 3rem; margin-bottom: 1rem;">✅</p>
+                <h3 style="color: var(--success); margin-bottom: 1rem;">ثبت‌نام با موفقیت انجام شد!</h3>
+                <p class="text-muted">پس از بررسی فیش واریزی، نتیجه از طریق تلگرام اطلاع‌رسانی می‌شود.</p>
+                <a href="index.html" class="btn btn-primary" style="margin-top: 1.5rem;">بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; ۱۴۰۴ — وب‌سایت رسمی ریحانه زراعتکار</p>
+</footer>
+
+<script src="js/config.js"></script>
+<script>
+    let currentStep = 1;
+    let registrationClosed = false;
+
+    initCountdown('countdown', () => {
+        registrationClosed = true;
+        showClosed();
+    });
+
+    fetchCourseStatus().then(data => {
+        if (data && !data.registrationOpen) {
+            registrationClosed = true;
+            showClosed();
+        }
+    });
+
+    function showClosed() {
+        document.getElementById('closed-banner').classList.remove('hidden');
+        document.getElementById('form-container').classList.add('hidden');
+    }
+
+    function showAlert(message, type = 'error') {
+        const box = document.getElementById('alert-box');
+        box.className = 'alert alert-' + type;
+        box.textContent = message;
+        box.classList.remove('hidden');
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function hideAlert() {
+        document.getElementById('alert-box').classList.add('hidden');
+    }
+
+    function goToStep(step) {
+        hideAlert();
+
+        if (registrationClosed) {
+            showAlert('مهلت ثبت‌نام به پایان رسیده است.', 'warning');
+            return;
+        }
+
+        if (step === 2) {
+            const name = document.getElementById('full_name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            if (name.length < 3) {
+                showAlert('نام و نام خانوادگی را وارد کنید.');
+                return;
+            }
+            if (!/^09\d{9}$/.test(phone.replace(/\s/g, ''))) {
+                showAlert('شماره موبایل معتبر نیست. (مثال: 09123456789)');
+                return;
+            }
+        }
+
+        if (step === 3) {
+            const selected = document.querySelector('input[name="schedule_code"]:checked');
+            if (!selected) {
+                showAlert('لطفاً یکی از کدهای آموزشی را انتخاب کنید.');
+                return;
+            }
+        }
+
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById('step-' + i).classList.toggle('hidden', i !== step);
+            const dot = document.getElementById('dot-' + i);
+            dot.classList.remove('active', 'done');
+            if (i < step) dot.classList.add('done');
+            else if (i === step) dot.classList.add('active');
+        }
+
+        currentStep = step;
+    }
+
+    function copyCard() {
+        navigator.clipboard.writeText(COURSE_CONFIG.cardNumber).then(() => {
+            showAlert('شماره کارت کپی شد!', 'success');
+            setTimeout(hideAlert, 2000);
+        });
+    }
+
+    const dropZone = document.getElementById('file-drop-zone');
+    const fileInput = document.getElementById('receipt');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            showPreview(e.dataTransfer.files[0]);
+        }
+    });
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) showPreview(fileInput.files[0]);
+    });
+
+    function showPreview(file) {
+        if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+            showAlert('فرمت فایل مجاز نیست.');
+            return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            showAlert('حجم فایل نباید بیشتر از ۵ مگابایت باشد.');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.getElementById('preview-img').src = e.target.result;
+            document.getElementById('file-name').textContent = file.name;
+            document.getElementById('upload-placeholder').classList.add('hidden');
+            document.getElementById('upload-preview').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function submitRegistration() {
+        hideAlert();
+
+        if (registrationClosed) {
+            showAlert('مهلت ثبت‌نام به پایان رسیده است.', 'warning');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        if (!file) {
+            showAlert('لطفاً تصویر فیش واریزی را بارگذاری کنید.');
+            return;
+        }
+
+        const selected = document.querySelector('input[name="schedule_code"]:checked');
+        const btn = document.getElementById('submit-btn');
+        btn.disabled = true;
+        btn.textContent = 'در حال ارسال...';
+
+        const formData = new FormData();
+        formData.append('full_name', document.getElementById('full_name').value.trim());
+        formData.append('phone', document.getElementById('phone').value.trim());
+        formData.append('telegram', document.getElementById('telegram').value.trim());
+        formData.append('schedule_code', selected.value);
+        formData.append('receipt', file);
+
+        try {
+            const res = await fetch('/api/register', { method: 'POST', body: formData });
+            const data = await res.json();
+
+            if (!res.ok || !data.success) {
+                showAlert(data.error || 'خطا در ثبت‌نام. لطفاً دوباره تلاش کنید.');
+                btn.disabled = false;
+                btn.textContent = 'ثبت‌نام نهایی';
+                return;
+            }
+
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('step-' + i).classList.add('hidden');
+            }
+            document.querySelector('.steps-indicator').classList.add('hidden');
+            document.getElementById('step-success').classList.remove('hidden');
+        } catch {
+            showAlert('خطا در ارتباط با سرور. لطفاً دوباره تلاش کنید.');
+            btn.disabled = false;
+            btn.textContent = 'ثبت‌نام نهایی';
+        }
+    }
+</script>
+</body>
+</html>

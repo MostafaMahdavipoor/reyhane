@@ -1,0 +1,13 @@
+{
+  "name": "reyhane",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev . --d1=DB --r2=RECEIPTS",
+    "deploy": "wrangler pages deploy .",
+    "db:migrate": "wrangler d1 execute reyhane-registrations --remote --file=./schema.sql",
+    "db:migrate:local": "wrangler d1 execute reyhane-registrations --local --file=./schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^3.99.0"
+  }
+}
